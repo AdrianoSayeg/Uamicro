@@ -57,7 +57,7 @@ control= {
     },
     #EXECUTE
     2: {
-        f'{i}{j}': 0x8000 if f'{i}{j}' == 'f4'
+        f'{i}{j}': 0x8000 if f'{i}{j}' == 'f6'
         else 0x44 if i == '0'
         else 0x1400 if f'{i}{j}'=="f0"
         else 0x600 if f'{i}{j}'=="f1"
@@ -89,3 +89,7 @@ control= {
         for i in ['0','f'] for j in range(6)
     }
 }
+
+nemonico={'00':'LDA','01':'LDB','02':'STA','03':'STB','04':'ADD','05':'SBB',
+                      'f0':'ADA','f1':'ADB','f2':'SUA','f3':'SUB','f6':'HLT',
+                     }

@@ -1,4 +1,4 @@
-from componentes import registro,ALU,pc,MEM,control
+from componentes import registro,ALU,pc,MEM,control,nemonico
 from time import sleep
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QTimer
@@ -24,8 +24,9 @@ class uamicro1(QtWidgets.QWidget):
         self.busd = 0x0
         self.ex = 0
         self.cont = 0
-        
         self.control= control
+        self.nemonico=nemonico
+        
     
     def actualizar_labels(self):
         self.ui.label_A.setText(f"{self.ACC_A.enable():02x}")
@@ -41,16 +42,28 @@ class uamicro1(QtWidgets.QWidget):
     def cargar_memoria(self, programa):
         for i in range(len(programa)):
             self.MEM.load([i, programa[i]])
+        self.cont=0
         self.PC.clear()
+        self.ex=0
+        self.ui.tableWidget.setRowCount(len(self.MEM.lista))
+        for row,x in enumerate(self.MEM.lista):
+            self.ui.tableWidget.setItem(row,0,QtWidgets.QTableWidgetItem(f'{x:02x}'))
+        row=0
+        while row+1< len(self.MEM.lista):
+            x = self.MEM.lista[row]
+            if f'{x:02x}' in self.nemonico:
+                nemonico=self.nemonico[f'{x:02x}']
+                if f'{x:02x}'[0]=='0':
+                    row+=1
+                    self.ui.tableWidget.setItem(row-1,1,QtWidgets.QTableWidgetItem(f'{nemonico} ({self.MEM.lista[row]:02X})'))
+                else:
+                    self.ui.tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(f'{nemonico}'))
+            row+=1
+                                            
 
     def ejecutar(self):
         if self.ex:
             print('\nFIN DE EJECUCIÓN')
-            self.cont=0
-            self.PC.clear()
-            self.ex=0
-            '''for i in self.MEM.lista:
-                self.MEM.load([i,0])'''
         else:
             self.actualizar_labels()
             print(f"\n=== Ciclo {self.cont} ===")
@@ -84,6 +97,7 @@ class uamicro1(QtWidgets.QWidget):
                 self.MAR.load(self.busd)
             if IPC:
                 self.PC.incrementa()
+            
             print(self.busd)
             print(self.ex,_,EA,LA,SU,EU,LB,EB,IPC,EPC,LAR,EAR,LIR,LM,VMA,WR)
             print(f"Instruccion: {self.IR.enable():02x}")
