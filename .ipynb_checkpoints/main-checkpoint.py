@@ -26,6 +26,22 @@ class uamicro1(QtWidgets.QWidget):
         self.cont = 0
         self.control= control
         self.nemonico=nemonico
+        self.ui.pushButton_2.clicked.connect(self.celda_modificada)
+        self.ui.pushButton_1.clicked.connect(self.abrir_archivo)
+        self.actualizar_lista()
+    
+
+    def abrir_archivo(self):
+        ruta_archivo, _ = QtWidgets.QFileDialog.getOpenFileName(self, "Selecciona un archivo", "", "Todos los archivos (*)")
+        if ruta_archivo:
+            with open(ruta_archivo, 'r', encoding='utf-8') as f:
+                lista = [int(linea.strip(),16) for linea in f if linea.strip() != ""]
+            self.cargar_memoria(lista)
+
+    def celda_modificada(self):
+        filas = self.ui.tableWidget.rowCount()
+        items=[int(self.ui.tableWidget.item(fila, 0).text(),16) for fila in range(filas)]
+        self.cargar_memoria(items)
         
     
     def actualizar_labels(self):
@@ -42,9 +58,9 @@ class uamicro1(QtWidgets.QWidget):
     def cargar_memoria(self, programa):
         for i in range(len(programa)):
             self.MEM.load([i, programa[i]])
-        self.cont=0
-        self.PC.clear()
-        self.ex=0
+            self.actualizar_lista()
+
+    def actualizar_lista(self):
         self.ui.tableWidget.setRowCount(len(self.MEM.lista))
         for row,x in enumerate(self.MEM.lista):
             self.ui.tableWidget.setItem(row,0,QtWidgets.QTableWidgetItem(f'{x:02x}'))
@@ -56,17 +72,23 @@ class uamicro1(QtWidgets.QWidget):
                 if f'{x:02x}'[0]=='0':
                     row+=1
                     self.ui.tableWidget.setItem(row-1,1,QtWidgets.QTableWidgetItem(f'{nemonico} ({self.MEM.lista[row]:02X})'))
+                    self.ui.tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(''))
                 else:
                     self.ui.tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(f'{nemonico}'))
+            else:
+                self.ui.tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(''))
             row+=1
                                             
 
     def ejecutar(self):
         if self.ex:
-            print('\nFIN DE EJECUCIÓN')
+            #print('\nFIN DE EJECUCIÓN')
+            self.PC.clear()
+            self.cont=0
+            self.ex=0
         else:
             self.actualizar_labels()
-            print(f"\n=== Ciclo {self.cont} ===")
+            #print(f"\n=== Ciclo {self.cont} ===")
             self.busc=self.control[self.cont][f"{self.IR.enable():02x}"]
             self.ex,_,EA,LA,SU,EU,LB,EB,IPC,EPC,LAR,EAR,LIR,LM,VMA,WR= map(int, f'{self.busc:016b}')
             self.ALU.operar( self.ACC_A.enable(), self.ACC_B.enable(), SU)
@@ -98,12 +120,12 @@ class uamicro1(QtWidgets.QWidget):
             if IPC:
                 self.PC.incrementa()
             
-            print(self.busd)
+            '''print(self.busd)
             print(self.ex,_,EA,LA,SU,EU,LB,EB,IPC,EPC,LAR,EAR,LIR,LM,VMA,WR)
             print(f"Instruccion: {self.IR.enable():02x}")
             print(f"Resultado ALU: {self.ALU.enable()}")
             print(f"ACC_A: {self.ACC_A.enable()}, ACC_B: {self.ACC_B.enable()}")
             print(f"MAR: {self.MAR.enable()}, AR: {self.AR.enable()}")
-            print(f"PC: {self.PC.enable()}, IR: {self.IR.enable()}")
+            print(f"PC: {self.PC.enable()}, IR: {self.IR.enable()}")'''
             self.cont=(self.cont + 1) % 7
             QTimer.singleShot(50, self.ejecutar)
