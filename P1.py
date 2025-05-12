@@ -168,7 +168,7 @@ class Ui_Form(object):
         self.label_15.setText(_translate("Form", "IR"))
         self.label_IR.setText(_translate("Form", "00"))
         self.pushButton.setText(_translate("Form", "EJECUTAR"))
-        self.pushButton_1.setText(_translate("Form", "GUARDAR"))
+        self.pushButton_1.setText(_translate("Form", "ARCHIVOS"))
         self.pushButton_2.setText(_translate("Form", "MODIFICAR"))
         self.pushButton_3.setText(_translate("Form", "MODO"))
         self.label_3.setText(_translate("Form", "MEM"))
