@@ -46,3 +46,46 @@ class MEM():
     
     def load(self,x):
         self.lista[x[0]]  = x[1] 
+
+control= {
+#FETCH
+    0:{
+        f'{i}{j}':0x44 for i in ['0','f'] for j in range(6)                  
+    },
+    1:{
+        f'{i}{j}':0x8b for i in ['0','f'] for j in range(6)                   
+    },
+    #EXECUTE
+    2: {
+        f'{i}{j}': 0x8000 if f'{i}{j}' == 'f4'
+        else 0x44 if i == '0'
+        else 0x1400 if f'{i}{j}'=="f0"
+        else 0x600 if f'{i}{j}'=="f1"
+        else 0x1c00 if f'{i}{j}'=="f2"
+        else 0x1e00 if f'{i}{j}'=="f3"
+        else 0x0
+        for i in ['0','f'] for j in range(6)
+    },
+    3: {
+        f'{i}{j}': 0xa3 if i == '0'
+        else 0x0 
+        for i in ['0','f'] for j in range(6)
+    },
+    4: {
+        f'{i}{j}': 0x14 if i == '0'
+        else 0x0 
+        for i in ['0','f'] for j in range(6)
+    },
+    5: {
+        f'{i}{j}': 0x3+0x1000*(1-j)+0x200*j if f'{i}{j}' in ('00','01')
+        else 0x2+0x2000*(3-j)+0x100*(j-2) if f'{i}{j}' in ('02','03')
+        else 0x203 if f'{i}{j}' in ('04','05')
+        else 0x0 
+        for i in ['0','f'] for j in range(6)
+    },                
+    6: {
+        f'{i}{j}': 0x1400+0x800*(j//2) if f'{i}{j}' in ('04','05')
+        else 0x0 
+        for i in ['0','f'] for j in range(6)
+    }
+}
