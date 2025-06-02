@@ -31,15 +31,31 @@ class uamicro1(QtWidgets.QWidget):
         self.ex = 0         # bit de fin de ejecución
         self.cont = 0       # contador de microciclos
         self.nemonico = nemonico
+        self.m=0
 
         # Conectar los botones de la interfaz a sus respectivas funciones
-        self.ui.pushButton.clicked.connect(self.ejecutar)
-        self.ui.pushButton_2.clicked.connect(self.celda_modificada)
-        self.ui.pushButton_1.clicked.connect(self.abrir_archivo)
+        self.ui.pushButton_ejecutar.clicked.connect(self.ejecutar)
+        self.ui.pushButton_modificar.clicked.connect(self.celda_modificada)
+        self.ui.pushButton_archivos.clicked.connect(self.abrir_archivo)
+        self.ui.pushButton_modo.clicked.connect(self.modo)
+        self.ui.pushButton_modo_2.clicked.connect(self.modo_2)
 
         # Cargar la memoria en la tabla
         self.actualizar_lista()
 
+    def modo_2(self):
+        #avanza un paso en el programa 
+        if self.ex:
+            pass
+        elif self.m:
+            self.ejecutar()
+
+    def modo(self):
+        #Permite ejecutar todo el programa o hacerlo paso por paso
+        m=["CONTINUO","PASOS"]
+        self.m=1-self.m
+        self.ui.label_busc_2.setText(f"{m[self.m]}")
+        
     def abrir_archivo(self):
         """
         Abre un archivo de texto con instrucciones de la UAMICRO1 (en hexadecimal, una por línea) y lo carga en memoria.
@@ -78,7 +94,8 @@ class uamicro1(QtWidgets.QWidget):
         # Actualiza la tabla de memoria en la interfaz gráfica y traduce las instrucciones a nemónicos.
         self.ui.tableWidget.setRowCount(len(self.MEM.lista))
         for row, x in enumerate(self.MEM.lista):
-            self.ui.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(f'{x:02x}'))
+            self.ui.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(f'{row:02x}'))
+            self.ui.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(f'{x:02x}'))
         row = 0
         while row + 1 < len(self.MEM.lista):
             x = self.MEM.lista[row]
@@ -87,12 +104,12 @@ class uamicro1(QtWidgets.QWidget):
                 nemonico = self.nemonico[hex_instr]
                 if hex_instr[0] == '0':  # instrucción con operando
                     row += 1
-                    self.ui.tableWidget.setItem(row - 1, 1, QtWidgets.QTableWidgetItem(f'{nemonico} ({self.MEM.lista[row]:02X})'))
-                    self.ui.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(''))
+                    self.ui.tableWidget.setItem(row - 1, 2, QtWidgets.QTableWidgetItem(f'{nemonico} ({self.MEM.lista[row]:02X})'))
+                    self.ui.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(''))
                 else:
-                    self.ui.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(f'{nemonico}'))
+                    self.ui.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(f'{nemonico}'))
             else:
-                self.ui.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(''))
+                self.ui.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(''))
             row += 1
 
     def ejecutar(self):
@@ -140,7 +157,8 @@ class uamicro1(QtWidgets.QWidget):
 
             # Actualizar el contador para avanzar al siguiente ciclo
             self.cont = (self.cont + 1) % 7
-            QTimer.singleShot(50, self.ejecutar)  # Ejecutar el siguiente ciclo con 50 ms de retardo
+            if self.m==0:
+                QTimer.singleShot(50, self.ejecutar)  # Ejecutar el siguiente ciclo con 50 ms de retardo
 
 
 # Código para correr la aplicación
