@@ -38,25 +38,27 @@ class uamicro1(QtWidgets.QWidget):
         self.ui.pushButton_modificar.clicked.connect(self.celda_modificada)
         self.ui.pushButton_archivos.clicked.connect(self.abrir_archivo)
         self.ui.pushButton_modo.clicked.connect(self.modo)
-        self.ui.pushButton_modo_2.clicked.connect(self.modo_2)
 
         # Cargar la memoria en la tabla
         self.actualizar_lista()
 
-    def modo_2(self):
-        #avanza un paso en el programa 
-        if self.ex:
-            pass
-        elif self.m:
-            self.ejecutar()
 
     def modo(self):
         #Permite ejecutar todo el programa o hacerlo paso por paso
         m=["CONTINUO","PASOS"]
         self.m=1-self.m
         self.ui.label_busc_2.setText(f"{m[self.m]}")
+        self.reiniciar()
+
+    def reiniciar(self):
+        #Deja todo listo para correr un programa desde el principio
+        self.PC.clear()
+        self.cont = 0
+        self.ex = 0
+        self.actualizar_labels()
         
     def abrir_archivo(self):
+        self.reiniciar()
         """
         Abre un archivo de texto con instrucciones de la UAMICRO1 (en hexadecimal, una por línea) y lo carga en memoria.
         """
@@ -71,6 +73,7 @@ class uamicro1(QtWidgets.QWidget):
         filas = self.ui.tableWidget.rowCount()
         items = [int(self.ui.tableWidget.item(fila, 0).text(), 16) for fila in range(filas)]
         self.cargar_memoria(items)
+        self.reiniciar()
 
     def actualizar_labels(self):
         # Actualiza las etiquetas de la interfaz con los valores actuales de los registros y buses.
@@ -116,9 +119,7 @@ class uamicro1(QtWidgets.QWidget):
         # Ejecuta las instrucciones del microprocesador paso a paso y haciendo pausas.
         
         if self.ex:  # Si la ejecución terminó, limpia el contador de programa y deja listo el microprocesador para ejecutar un programa.
-            self.PC.clear()
-            self.cont = 0
-            self.ex = 0
+            self.reiniciar()
         else:
             self.actualizar_labels() # mostramos los valores en la interfaz.
 
