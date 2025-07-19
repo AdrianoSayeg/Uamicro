@@ -17,7 +17,7 @@ class Dialog(QDialog):
     def __init__(self):
         QDialog.__init__(self)
         self.color = Qt.green
-        self.ui = loadUi('UAMicro_GUI/prueba_dialog_uamicro.ui', self)
+        self.ui = loadUi('prueba_dialog_uamicro.ui', self)
         self.ui.opPushButton.clicked.connect(self.op)
 
     def op(self):
@@ -33,13 +33,17 @@ class Dialog(QDialog):
         my_pen.setColor(QColor(255, 0, 0, 100))
         painter.setPen(my_pen)
         painter.setBrush(QBrush(self.color, Qt.SolidPattern))
-
-        #arrow = Arrow(QPointF(200, 120), QPointF(425, 120), 10, 10, 5)
-        width = self.width()
-        height = self.height()
         
-        start = QPointF(width * 0.35, height / 1.8)
-        end = QPointF(width * 0.65, height / 1.8)
+        # Flecha en términos de las coordenadas de los LineEdit
+        st = self.ui.AccALineEdit.pos()
+        st_width = self.ui.AccALineEdit.width()
+        st_height = self.ui.AccALineEdit.height()
+        start = QPointF(st.x()+st_width+10, st.y()+st_height/2)
+
+        e = self.ui.AccBLineEdit.pos()
+        e_width = self.ui.AccBLineEdit.width()
+        e_height = self.ui.AccBLineEdit.height()
+        end = QPointF(e.x()-10, e.y()+e_height/2)
         
         arrow = Arrow(start, end, 10, 10, 5)
         arrow_polygon = arrow.arrowCalc()
