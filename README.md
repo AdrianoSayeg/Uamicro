@@ -41,9 +41,4 @@ La arquitectura de UAMICRO sigue un modelo simplificado del esquema de **Von Neu
   - `PyQt5`  
   - `numpy`  
 
-Instalación con:
-
-```bash
-pip install -r requirements.txt
-
 
