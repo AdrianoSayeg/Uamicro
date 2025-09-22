@@ -6,5 +6,5 @@ El propósito de este microprocesador es facilitar la comprensión de los mecani
 
 La arquitectura de UAMICRO sigue un modelo simplificado del esquema de Von Neumann, en el que los bloques funcionales tradicionales (entrada, memoria y salida) se integran en una única unidad de memoria. Esta configuración permite observar de forma clara el ciclo de instrucción y sus efectos internos sobre los componentes del sistema.
 
-> Fragmento adaptado del "Corso Pratico di Informatica", disponible en [papuasia.org](https://papuasia.org/corsopratico/omo), utilizado con fines educativos.
+> Fragmento adaptado del "Corso Pratico di Informatica", disponible en [papuasia.org](https://papuasia.org/corsopratico/), utilizado con fines educativos.
 
