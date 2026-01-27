@@ -1,0 +1,46 @@
+# --- INICIALIZACIÓN ---
+00 00  # LDA: Carga el primer valor del arreglo
+01 10  # (Dirección fuente inicial: 10)
+02 04  # ADD: Suma lo que hay en la dirección 20
+03 20  # (Dirección del número 5 constante)
+04 02  # STA: Guarda en la nueva posición
+05 15  # (Dirección destino inicial: 15)
+
+# --- AUTOMODIFICACIÓN (Avanzar punteros) ---
+06 00  # LDA: Carga el operando del primer LDA (dir 01)
+07 01  # 
+08 04  # ADD: Suma 1 (ubicado en dir 21)
+09 21  # 
+0a 02  # STA: Guarda el nuevo puntero de vuelta en dir 01
+0b 01  # 
+
+0c 00  # LDA: Carga el operando del STA (dir 05)
+0d 05  # 
+0e 04  # ADD: Suma 1
+0f 21  # 
+10 02  # STA: Guarda el nuevo puntero en dir 05
+11 05  # 
+
+# --- CONTROL DE BUCLE ---
+12 00  # LDA: Carga el contador
+13 22  # (Dirección del contador: 22)
+14 05  # SBB: Resta 1
+15 21  # 
+16 02  # STA: Guarda contador actualizado
+17 22  # 
+# NOTA: Aquí tu CPU necesitaría un JNZ (Jump if Not Zero) 
+# para repetir el proceso 5 veces. 
+# Si no tienes JMP, ejecútalo paso a paso 5 veces.
+
+# --- PARADA ---
+18 f6  # HLT
+
+# --- DATOS Y CONSTANTES ---
+10 01  # Valor 1 del arreglo
+11 02  # Valor 2 del arreglo
+12 03  # Valor 3 del arreglo
+13 04  # Valor 4 del arreglo
+14 05  # Valor 5 del arreglo
+20 05  # CONSTANTE: Número a sumar
+21 01  # CONSTANTE: Incremento
+22 05  # VARIABLE: Contador de vueltas

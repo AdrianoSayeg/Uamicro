@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>872</width>
+    <height>686</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>51</y>
+      <width>359</width>
+      <height>495</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_14">
+     <item>
+      <widget class="QLabel" name="label_bus_datos">
+       <property name="styleSheet">
+        <string notr="true">color: #084B8A; font-family: Courier;  font-weight: bold; font-size: 10px; padding: 5px;</string>
+       </property>
+       <property name="text">
+        <string>BUS DE DATOS Y DIRECCIONES (8 BITS):</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_10">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_17">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <item>
+            <widget class="QLabel" name="label_OUT">
+             <property name="styleSheet">
+              <string notr="true">background-color: #A9D0F5; color: #084B8A; font-family: OCR A Extended; border: 3px solid #084B8A; border-radius: 5px; font-weight: bold; font-size: 16px; padding: 5px;</string>
+             </property>
+             <property name="text">
+              <string>00</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_12">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_7">
+               <item>
+                <widget class="QLabel" name="label_MEM">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #A9D0F5; color: #084B8A; font-family: Courier; border: 3px solid #084B8A; border-radius: 5px; font-weight: bold; font-size: 16px; padding: 5px;</string>
+                 </property>
+                 <property name="text">
+                  <string>MEM</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_20">
+                   <property name="text">
+                    <string>W/R'</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="WR">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>4</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: #084B8A; </string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_8">
+               <item>
+                <widget class="QLabel" name="label_MAR">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: #A9D0F5; color: #084B8A; font-family: Courier; border: 3px solid #084B8A; border-radius: 5px; font-weight: bold; font-size: 16px; padding: 5px;</string>
+                 </property>
+                 <property name="text">
+                  <string>MAR</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_24">
+                   <property name="text">
+                    <string>LM</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="LM">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>4</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: #084B8A; </string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="tabla_memoria"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_A">
+             <property name="minimumSize">
+              <size>
+               <width>74</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #A9D0F5; color: #084B8A; font-family: Courier; border: 3px solid #084B8A; border-radius: 5px; font-weight: bold; font-size: 16px; padding: 5px;</string>
+             </property>
+             <property name="text">
+              <string>ACC A</string>
+             </property>
+             <property name="textFormat">
+              <enum>Qt::RichText</enum>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="indent">
+              <number>0</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_15">
+               <property name="text">
+                <string>EA</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="EA">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_16">
+               <property name="text">
+                <string>LA</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="LA">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_ALU">
+             <property name="minimumSize">
+              <size>
+               <width>74</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #A9D0F5; color: #084B8A; font-family: Courier; border: 3px solid #084B8A; border-radius: 5px; font-weight: bold; font-size: 16px; padding: 5px;</string>
+             </property>
+             <property name="text">
+              <string>ALU</string>
+             </property>
+             <property name="textFormat">
+              <enum>Qt::RichText</enum>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="indent">
+              <number>0</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_21">
+               <property name="text">
+                <string>SU</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="SU">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_23">
+               <property name="text">
+                <string>EU</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="EU">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_B">
+             <property name="minimumSize">
+              <size>
+               <width>74</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #A9D0F5; color: #084B8A; font-family: Courier; border: 3px solid #084B8A; border-radius: 5px; font-weight: bold; font-size: 16px; padding: 5px;</string>
+             </property>
+             <property name="text">
+              <string>ACC B</string>
+             </property>
+             <property name="textFormat">
+              <enum>Qt::RichText</enum>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="indent">
+              <number>0</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_17">
+               <property name="text">
+                <string>LB</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="LB">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_19">
+               <property name="text">
+                <string>EB</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="EB">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_PC">
+             <property name="minimumSize">
+              <size>
+               <width>74</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #A9D0F5; color: #084B8A; font-family: Courier; border: 3px solid #084B8A; border-radius: 5px; font-weight: bold; font-size: 16px; padding: 5px;</string>
+             </property>
+             <property name="text">
+              <string>PC</string>
+             </property>
+             <property name="textFormat">
+              <enum>Qt::RichText</enum>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="indent">
+              <number>0</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_7">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_25">
+               <property name="text">
+                <string>IPC</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="IPC">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_26">
+               <property name="text">
+                <string>CLR</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="CLR_PC">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_27">
+               <property name="text">
+                <string>EPC</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="EPC">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_AR">
+             <property name="minimumSize">
+              <size>
+               <width>74</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #A9D0F5; color: #084B8A; font-family: Courier; border: 3px solid #084B8A; border-radius: 5px; font-weight: bold; font-size: 16px; padding: 5px;</string>
+             </property>
+             <property name="text">
+              <string>AR</string>
+             </property>
+             <property name="textFormat">
+              <enum>Qt::RichText</enum>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="indent">
+              <number>0</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_28">
+               <property name="text">
+                <string>LAR</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="LAR">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_30">
+               <property name="text">
+                <string>EAR</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="EAR">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_31">
+               <property name="text">
+                <string>CLR</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="CLR_AR">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_IR">
+             <property name="minimumSize">
+              <size>
+               <width>74</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #A9D0F5; color: #084B8A; font-family: Courier; border: 3px solid #084B8A; border-radius: 5px; font-weight: bold; font-size: 16px; padding: 5px;</string>
+             </property>
+             <property name="text">
+              <string>IR</string>
+             </property>
+             <property name="textFormat">
+              <enum>Qt::RichText</enum>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="indent">
+              <number>0</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_33">
+               <property name="text">
+                <string>LIR</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="LIR">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_35">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>CLR</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="CLR_IR">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>4</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #084B8A; </string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_CON">
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: #A9D0F5; color: #084B8A; font-family: Courier; border: 3px solid #084B8A; border-radius: 5px; font-weight: bold; font-size: 16px; padding: 5px;</string>
+           </property>
+           <property name="text">
+            <string>CON</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_bus_control">
+       <property name="styleSheet">
+        <string notr="true">color: #084B8A; font-family: Courier;  font-weight: bold; font-size: 10px; padding: 5px;</string>
+       </property>
+       <property name="text">
+        <string>BUS DE CONTROL:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_14">
+       <item>
+        <widget class="QPushButton" name="btn_load">
+         <property name="text">
+          <string>LOAD</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_start">
+         <property name="text">
+          <string>START</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_paso">
+         <property name="text">
+          <string>STEP</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_clear">
+         <property name="text">
+          <string>CLEAR</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>872</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
