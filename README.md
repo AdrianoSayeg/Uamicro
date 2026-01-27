@@ -1,44 +1,39 @@
-# UAMICRO I
+# UAMICRO Project: Simulador de Microprocesadores Didácticos
 
-**UAMICRO I** es un microprocesador didáctico diseñado para simular la arquitectura y el funcionamiento interno de una CPU elemental.  
-Se trata de un microprocesador simple y de capacidad limitada, cuyo objetivo principal es ilustrar las dos funciones básicas de las computadoras: la decodificación de la instrucción (**FETCH**) y la ejecución (**EXECUTE**).
+Este repositorio contiene la implementación en Python de los microprocesadores**UAMICRO**, diseñados con fines educativos para ilustrar la arquitectura y el funcionamiento interno de una CPU elemental.
 
-El propósito de este microprocesador es facilitar la comprensión de los mecanismos fundamentales de ejecución de instrucciones, el funcionamiento de registros, la ALU, la memoria y el control por microinstrucciones.  
+El proyecto permite visualizar las dos funciones básicas de una computadora: la decodificación de la instrucción (**FETCH**) y su ejecución (**EXECUTE**).
 
-La arquitectura de UAMICRO sigue un modelo simplificado del esquema de **Von Neumann**, en el que los bloques funcionales tradicionales (entrada, memoria y salida) se integran en una única unidad de memoria. Esta configuración permite observar de forma clara el ciclo de instrucción y sus efectos internos sobre los componentes del sistema.
+> Basado en el *"Corso Pratico di Informatica"*, disponible en [papuasia.org](https://papuasia.org/corsopratico/).
 
-> Fragmento adaptado del *"Corso Pratico di Informatica"*, disponible en [papuasia.org](https://papuasia.org/corsopratico/), utilizado con fines educativos.
 
 ---
 
-## 🚀 Características principales
+## UAMICRO I: Características Técnicas
 
-- Simulación de una arquitectura de microprocesador educativo.
-- Implementación en Python de:
-  - Unidad Aritmética Lógica (ALU)
-  - Contador de programa (PC)
-  - Registros
-  - Memoria unificada
-- Ejecución de instrucciones paso a paso para observar los efectos internos.
-- Interfaces gráficas experimentales desarrolladas en PyQt5.
+La primera versión simula una arquitectura simplificada del modelo **Von Neumann**:
 
----
-
-## 📂 Estructura del proyecto
-
-- `src/` → versión estable y funcional del simulador.  
-- `experimental/` → desarrollos en progreso:  
-  - `UAMicroII/` → segunda versión del microprocesador (en desarrollo).  
-  - `UAMicro_GUI/` → nueva interfaz gráfica experimental.  
-- `docs/` → documentación, reportes o capturas (a completar).  
+- **Arquitectura de 8 bits**: Buses de datos y direcciones independientes.
+- **Memoria Unificada**: 256 locaciones de 8 bits.
+- **Componentes Implementados**:
+  - **ALU**: Operaciones aritméticas básicas (ADD, SUB).
+  - **Registros**: Acumuladores A y B, PC (Program Counter), IR (Instruction Register).
+  - **Matriz de Control**: Lógica basada en microinstrucciones y fases de tiempo (T0-T6).
+- **Interfaz Gráfica (PyQt5)**: 
+  - Visualización en tiempo real de registros y buses.
+  - Resaltado dinámico del Program Counter en la tabla de memoria.
+  - Carga de programas mediante archivos `.txt` en formato hexadecimal.
 
 ---
 
-## 🛠️ Requisitos
+## Instalación y Uso
 
-- Python 3.9+  
-- Dependencias:
-  - `PyQt5`  
-  - `numpy`  
+### Requisitos
+- Python 3.9+
+- PyQt5
 
-
+### Ejecución
+Para correr el simulador de la versión 1:
+```bash
+cd uamicro1
+python3 main_gui.py
