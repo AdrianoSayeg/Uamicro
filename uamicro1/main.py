@@ -1,3 +1,13 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Simulador UAMICRO I 
+
+@author: Gabriel Adriano Sayeg De Luca
+@author: OScar Yáñez Suárez
+"""
+
+
 import sys
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 from core.cpu import CPU
@@ -228,7 +238,7 @@ class SimuladorUAMICRO(QtWidgets.QMainWindow):
 
                 self.actualizar_pantalla()
             except Exception as e:
-                QtWidgets.QMessageBox.critical(self, "Error de Carga", f"Error al cargar el archivo: {e}")
+                QtWidgets.QMessageBox.critical(self, e)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
