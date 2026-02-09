@@ -164,7 +164,7 @@ class SimuladorUAMICRO(QtWidgets.QMainWindow):
             self.timer.stop()
             self.btn_start.setText("START")
         else:
-            self.timer.start(500) # 500ms por fase
+            self.timer.start(100) # 500ms por fase
             self.btn_start.setText("STOP")
 
     # Métodos de apoyo
@@ -230,7 +230,7 @@ class SimuladorUAMICRO(QtWidgets.QMainWindow):
                         continue
                     self.tabla_memoria.item(cp,2).setText(l)
                     tokens = l.split()
-                    if any(t in ['LDA', 'LDB', 'STA', 'STB', 'ADD', 'SBB'] for t in tokens):
+                    if any(t in ['LDA', 'LDB', 'STA', 'STB', 'ADD', 'SBB','JMP','JAZ'] for t in tokens):
                         cp += 2
                     else:
                         cp += 1

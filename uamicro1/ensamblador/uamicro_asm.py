@@ -27,7 +27,8 @@ except FileNotFoundError:
 """
 def ensamblar(programa):
     # Códigos de operación de la Uamicro I
-    UAMicroI_Opcodes = {'LDA': 0x00, 'LDB': 0x01, 'STA': 0x03, 'STB': 0x04, 'ADD': 0x04, 'SBB': 0x05, 
+    UAMicroI_Opcodes = {'LDA': 0x00, 'LDB': 0x01, 'STA': 0x02, 'STB': 0x03, 'ADD': 0x04, 'SBB': 0x05, 
+                        'JMP': 0x06, 'JAZ': 0x07,
                         'ADA': 0xF0, 'ADB': 0xF1, 'SUA': 0xF2, 'SUB': 0xF3, 'HLT': 0xF6} 
 
     #### Paso 1
@@ -46,8 +47,12 @@ def ensamblar(programa):
         # Procesa los tokens
         if len(tokens) == 3 and ':' in tokens[0] and tokens[1] in UAMicroI_Opcodes:
             # Caso - etiqueta: opcode dir
-            # Agrega etiqueta a tabla de símbolos
-            tabla_simbolos[tokens[0][:-1]] = [contador_de_programa, []]
+            etiqueta = tokens[0][:-1]
+            if etiqueta in tabla_simbolos:
+                # Si la etiqueta ya existe en la tabla de símbolos, actualiza su dirección de definición
+                tabla_simbolos[etiqueta][0] = contador_de_programa
+            else:
+                tabla_simbolos[etiqueta] = [contador_de_programa, []]
             # Agrega opcode al bytecode
             bytecode.append(UAMicroI_Opcodes[tokens[1]])
             # Checa si la dirección es símbolo o número
@@ -67,8 +72,13 @@ def ensamblar(programa):
             contador_de_programa += 2
         elif len(tokens) == 2 and ':' in tokens[0] and tokens[1] in UAMicroI_Opcodes:
             # Caso - etiqueta: opcode
-            # Agrega etiqueta a tabla de símbolos
-            tabla_simbolos[tokens[0][:-1]] = [contador_de_programa, []]
+            etiqueta = tokens[0][:-1]
+            if etiqueta in tabla_simbolos:
+                # Si la etiqueta ya existe en la tabla de símbolos, actualiza su dirección de definición
+                tabla_simbolos[etiqueta][0] = contador_de_programa
+            else:
+                # Agrega etiqueta a tabla de símbolos
+                tabla_simbolos[etiqueta] = [contador_de_programa, []]
             # Agrega opcode al bytecode
             bytecode.append(UAMicroI_Opcodes[tokens[1]])
             # Actualiza contador de programa

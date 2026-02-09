@@ -1,8 +1,14 @@
 INICIO: LDA X
-        LDB Y
-        ADA
-        STA Z
+        ADD Y
+        STA X
+        LDA I
+        SBB UNO
+        STA I
+        JAZ FIN
+        JMP INICIO
+
 FIN:    HLT
-X:      0x50
-Y:      0x05
-Z:      0x00
+X:      0x01
+Y:      0x02
+I:      0X03
+UNO:    0X01
