@@ -86,7 +86,7 @@ class CPU:
         #print(f"Decodificando Instrucción: OpCode {opcode_hex.upper()} en Fase T{self.phase} ---")
         word = self.control_matrix.get(self.phase, {}).get(opcode_hex, 0)
         if opcode_hex == '07' and self.phase==4:
-            print(f"JAZ: Evaluando condición ACC_A={self.registers.ACC_A}") 
+            #print(f"JAZ: Evaluando condición ACC_A={self.registers.ACC_A}") 
             if self.registers.ACC_A != 0: 
                 word = 0x0000
         self.bus_control = word

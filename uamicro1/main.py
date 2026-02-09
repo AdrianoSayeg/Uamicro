@@ -197,6 +197,7 @@ class SimuladorUAMICRO(QtWidgets.QMainWindow):
         self.btn_start.setText("START")
         self.actualizar_pantalla()
         self.actualizar_luces_control(1)
+        self.configurar_tabla_memoria()
         self.timer.stop()
         
 
